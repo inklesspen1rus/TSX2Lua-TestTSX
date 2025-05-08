@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/TypeScriptToLua/TypeScriptToLua/master/tsconfig-schema.json",
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "moduleResolution": "Node",
+    "types": [
+      "lua-types/5.2",
+      "@typescript-to-lua/language-extensions"
+    ],
+    "strict": true,
+    
+    // Declare there global modules
+    "baseUrl": "./global",
+
+    "rootDir": "src",
+    "outDir": "dist",
+
+    // React stuff
+    "jsx": "react",
+    // "jsxFactory": "MyNamespace.myCreate",
+    // "jsxFragmentFactory": "MyNamespace.Fragment",
+  },
+
+  "include": ["src"],
+  "exclude": ["dist"],
+
+  "tstl": {
+    // OC lua version
+    // Free to use up to 5.3
+    // If all plugins are disabled - up to 5.4
+    "luaTarget": "5.2",
+
+    // Use default to include npm libraries nearely
+    // Use library to import npm libraries from environment
+    "buildMode": "default",
+    "noHeader": true,
+    "luaLibImport": "require",
+    "noImplicitGlobalVariables": true,
+
+    // Add here any libraries to not distribute
+    // Also add here all global modules from ./global
+    "noResolvePaths": ["event"],
+
+    // Uncomment to create bundle
+    // "luaBundle": "bundle.lua",
+    // "luaBundleEntry": "./src/index.tsx",
+
+    "luaPlugins": [
+
+      // Minify lualib
+      { "name": "./tstl-plugins/minify-lualib.ts" },
+
+      // Split lualib from bundle, also minifies lualib
+      { "name": "./tstl-plugins/split-bundle-lualib.ts" },
+
+      // Minify every file
+      // { "name": "./tstl-plugins/minify.ts" },
+    ]
+  }
+}

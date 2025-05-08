@@ -1,0 +1,32 @@
+{
+  "devDependencies": {
+    "lua-types": "^2.13.1",
+    "luamin": "^1.0.4",
+    "luaparse": "^0.2.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2",
+    "typescript-to-lua": "^1.31.0"
+  },
+  "name": "tsx2lua-sample",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tstl",
+    "watch": "tstl --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inklesspen1rus/TSX2Lua-Sample.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inklesspen1rus/TSX2Lua-Sample/issues"
+  },
+  "homepage": "https://github.com/inklesspen1rus/TSX2Lua-Sample#readme",
+  "description": "",
+  "dependencies": {
+  }
+}
