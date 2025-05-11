@@ -18,8 +18,8 @@
 
     // React stuff
     "jsx": "react",
-    // "jsxFactory": "MyNamespace.myCreate",
-    // "jsxFragmentFactory": "MyNamespace.Fragment",
+    "jsxFactory": "React.create",
+    "jsxFragmentFactory": "React.Fragment",
   },
 
   "include": ["src"],
@@ -37,6 +37,7 @@
     "noHeader": true,
     "luaLibImport": "require",
     "noImplicitGlobalVariables": true,
+    "sourceMapTraceback": false,
 
     // Add here any libraries to not distribute
     // Also add here all global modules from ./global
@@ -49,10 +50,10 @@
     "luaPlugins": [
 
       // Minify lualib
-      { "name": "./tstl-plugins/minify-lualib.ts" },
+      // { "name": "./tstl-plugins/minify-lualib.ts" },
 
       // Split lualib from bundle, also minifies lualib
-      { "name": "./tstl-plugins/split-bundle-lualib.ts" },
+      // { "name": "./tstl-plugins/split-bundle-lualib.ts" },
 
       // Minify every file
       // { "name": "./tstl-plugins/minify.ts" },

@@ -1,11 +1,49 @@
-import {a} from './near';
-import * as event from 'event';
-import { a as b } from './luam'
+import { createContext } from "./hookuspocus";
+import { useState } from "./hooks/state";
+import { useEffect } from "./hooks/effect";
 
-print(a);
-print(b);
+declare namespace JSX {
+    type IntrinsicElements = {};
+}
 
-([[1], [2], [3]]).flat().forEach(x => print(x));
-print(event.d);
+import React, { ReactContext } from "./react";
+import useMemo from "./hooks/memo";
 
-print(`${a} ${b} ${event.d}`)
+let needUpdate = false
+
+const reactContext = new ReactContext(undefined, () => needUpdate = true)
+
+function WithEffect(this: void) {
+    print('Call with effect')
+    useMemo(() => print('Expensive call'), [])
+    useEffect(() => {
+        print('Im here')
+        return () => print('Good bye')
+    }, [])
+}
+
+function WithHooks(this: void, {init}: {init: number}) {
+    const countUpTo = 5
+    const [count, setCount] = useState(init)
+    const [stableState, _] = useState('unchanged')
+    print(`Function was called ${count} times. Stable state: ${stableState}`)
+    setCount(Math.min(countUpTo, count + 1))
+
+    useEffect(() => {
+        print(`Effecting with value ${count}`)
+        return () => print(`Cleaned up with value ${count}`)
+    }, [])
+    
+    return (count % 2 == 0) ? <WithEffect></WithEffect> : undefined
+}
+
+function Main(this: void) {
+    return <WithHooks init={1}></WithHooks>
+};
+
+do {
+    needUpdate = false;
+    reactContext.execute(<Main></Main>)
+} while (needUpdate);
+
+{using _ = reactContext}
