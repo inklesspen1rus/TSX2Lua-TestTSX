@@ -6,12 +6,12 @@ declare namespace JSX {
     type IntrinsicElements = {};
 }
 
-import React, { ReactContext } from "./react";
+import Leact, { LeactContext } from "./leact";
 import useMemo from "./hooks/memo";
 
 let needUpdate = false
 
-const reactContext = new ReactContext(undefined, () => needUpdate = true)
+const reactContext = new LeactContext(undefined, () => needUpdate = true)
 
 function WithEffect(this: void) {
     print('Call with effect')

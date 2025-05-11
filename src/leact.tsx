@@ -1,20 +1,23 @@
 import { HookusPocusContext } from "./hookuspocus"
 
-export type ReactHookusContext = {
+export type LeactHookusContext = {
     userdata?: any
+}
+
+export interface PropsType {
+    children: Node[];
+    key: any;
 }
 
 export interface Node<P extends {} = any> {
     component: Component<P>;
-    props?: Omit<P, 'children'>;
+    props?: P & Partial<PropsType>;
     children?: Node[];
     render?: () => void;
 };
-export type Component<P extends {} = {}> = (this: void, props: Readonly<P & { children?: Node[], key?: any }>) => void | Node | Node[]
+export type Component<P extends {} = {}> = (this: void, props: Readonly<P & Partial<PropsType>>) => void | Node | Node[]
 
-let idx = 0
-
-export default class React {
+export default class Leact {
     public static create<P extends {}>(component: Component<P>, props?: Omit<P, "children"> & any, ...children: Node[]): Node<P> {
         return {
             component,
@@ -28,7 +31,7 @@ export default class React {
 
 interface VNode {
     component?: Component;
-    context: HookusPocusContext<ReactHookusContext>;
+    context: HookusPocusContext<LeactHookusContext>;
     children?: VNode[];
     keyedChildren?: Map<AnyNotNil, VNode>;
 };
@@ -37,7 +40,7 @@ function isVNode(value: any): value is VNode {
     return !!value?.component;
 }
 
-export class ReactContext<T> {
+export class LeactContext<T> {
     public root: VNode;
 
     constructor(userdata: T, updateRequester: (this: void) => void) {

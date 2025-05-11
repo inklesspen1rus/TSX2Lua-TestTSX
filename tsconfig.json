@@ -18,8 +18,8 @@
 
     // React stuff
     "jsx": "react",
-    "jsxFactory": "React.create",
-    "jsxFragmentFactory": "React.Fragment",
+    "jsxFactory": "Leact.create",
+    "jsxFragmentFactory": "Leact.Fragment",
   },
 
   "include": ["src"],
