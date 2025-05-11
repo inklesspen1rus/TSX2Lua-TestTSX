@@ -1,6 +1,6 @@
 import { HookusPocusContext } from "./hookuspocus"
 
-export type LeactHookusContext = {
+export interface LeactHookusContext {
     userdata?: any
 }
 
