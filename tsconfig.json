@@ -9,12 +9,13 @@
       "@typescript-to-lua/language-extensions"
     ],
     "strict": true,
-    
-    // Declare there global modules
-    "baseUrl": "./global",
 
     "rootDir": "src",
     "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "composite": true,
+
 
     // React stuff
     "jsx": "react",
@@ -33,30 +34,9 @@
 
     // Use default to include npm libraries nearely
     // Use library to import npm libraries from environment
-    "buildMode": "default",
+    "buildMode": "library",
     "noHeader": true,
     "luaLibImport": "require",
     "noImplicitGlobalVariables": true,
-    "sourceMapTraceback": false,
-
-    // Add here any libraries to not distribute
-    // Also add here all global modules from ./global
-    "noResolvePaths": ["event"],
-
-    // Uncomment to create bundle
-    // "luaBundle": "bundle.lua",
-    // "luaBundleEntry": "./src/index.tsx",
-
-    "luaPlugins": [
-
-      // Minify lualib
-      // { "name": "./tstl-plugins/minify-lualib.ts" },
-
-      // Split lualib from bundle, also minifies lualib
-      // { "name": "./tstl-plugins/split-bundle-lualib.ts" },
-
-      // Minify every file
-      // { "name": "./tstl-plugins/minify.ts" },
-    ]
   }
 }

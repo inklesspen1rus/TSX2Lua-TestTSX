@@ -7,9 +7,8 @@
     "typescript": "^5.8.2",
     "typescript-to-lua": "^1.31.0"
   },
-  "name": "tsx2lua-sample",
+  "name": "leact-tstl",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tstl",
@@ -17,16 +16,32 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/inklesspen1rus/TSX2Lua-Sample.git"
+    "url": "git+https://github.com/inklesspen1rus/leact-tstl.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/inklesspen1rus/TSX2Lua-Sample/issues"
+    "url": "https://github.com/inklesspen1rus/leact-tstl/issues"
   },
-  "homepage": "https://github.com/inklesspen1rus/TSX2Lua-Sample#readme",
+  "homepage": "https://github.com/inklesspen1rus/leact-tstl#readme",
   "description": "",
   "dependencies": {
+  },
+  "files": [
+    "dist/*.lua",
+    "dist/*.d.ts"
+  ],
+  "exports": {
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "require": "./dist/*",
+      "import": "./dist/*"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": ["./dist/*"]
+    }
   }
 }

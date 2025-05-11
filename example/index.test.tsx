@@ -1,13 +1,13 @@
-import { createContext } from "./hookuspocus";
-import { useState } from "./hooks/state";
-import { useEffect } from "./hooks/effect";
+import { createContext } from "../src/hookuspocus";
+import { useState } from "../src/hooks/state";
+import { useEffect } from "../src/hooks/effect";
 
 declare namespace JSX {
     type IntrinsicElements = {};
 }
 
-import Leact, { LeactContext } from "./leact";
-import useMemo from "./hooks/memo";
+import Leact, { LeactContext } from "../src/leact";
+import useMemo from "../src/hooks/memo";
 
 let needUpdate = false
 
